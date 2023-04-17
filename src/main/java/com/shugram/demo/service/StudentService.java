@@ -1,0 +1,8 @@
+package com.shugram.demo.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.shugram.demo.entity.StudentEntity;
+
+
+public interface StudentService extends IService<StudentEntity> {
+}

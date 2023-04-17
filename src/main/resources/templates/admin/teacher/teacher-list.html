@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/lib/layui2.7.6/layui.js" charset="utf-8"></script>
+    <script type="module" src="/lib/xy-ui/index.js">
+    </script>
+</head>
+<body>
+<div v-scope>
+    <div style="margin: 20px;">
+        <xy-input placeholder="请输入搜索的内容"></xy-input>
+        <xy-button type="primary">搜索</xy-button>
+        <xy-button onclick="openTeacherAdd()">添加用户</xy-button>
+        <xy-button>批量删除</xy-button>
+        <xy-button>批量导入</xy-button>
+    </div>
+    <xy-table thead="选择,学号,教师姓名,操作"
+              @vue:mounted="getTeacherList()">
+        <xy-tr v-for="(item,index) in teacherListData" :key="index">
+            <xy-td>
+                <xy-checkbox></xy-checkbox>
+            </xy-td>
+            <xy-td>{{item.teacherId}}</xy-td>
+            <xy-td>{{item.teacherName}}</xy-td>
+            <xy-td>
+                <xy-button @click="openTeacherEdit(item)">编辑</xy-button>
+                <xy-button type="danger">删除</xy-button>
+            </xy-td>
+        </xy-tr>
+    </xy-table>
+    <div style="display: flex;justify-content: center;margin-top: 20px">
+        <xy-pagination pagesize="3" total="50"></xy-pagination>
+    </div>
+</div>
+<script src="/lib/petite-vue.iife.js"></script>
+<script>
+    function openTeacherEdit(item) {
+        console.log(item)
+        layer.open({
+            type: 2,
+            title: '编辑教师信息',
+            shadeClose: true,
+            shade: 0.3,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['600px', '400px'],
+            content: `/teacher_edit?teacherId=${item.teacherId}&teacherName=${item.teacherName}`
+        });
+    }
+
+    function openTeacherAdd() {
+        layer.open({
+            type: 2,
+            title: '添加学生',
+            shadeClose: true,
+            shade: 0.3,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['600px', '400px'],
+            content: '/student_add'
+        });
+    }
+
+    const teacherListData = PetiteVue.reactive([])
+    PetiteVue.createApp({
+        teacherListData
+    }).mount()
+
+    function getTeacherList() {
+        fetch("/teacher/list")
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                teacherListData.push(...data.data)
+            })
+    }
+
+</script>
+</body>
+</html>

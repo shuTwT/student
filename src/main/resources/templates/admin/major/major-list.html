@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/lib/layui2.7.6/layui.js" charset="utf-8"></script>
+    <script type="module" src="/lib/xy-ui/index.js">
+    </script>
+</head>
+<body>
+<div v-scope>
+    <div style="margin: 20px;">
+        <xy-input placeholder="请输入搜索的内容"></xy-input>
+        <xy-button type="primary">搜索</xy-button>
+        <xy-button onclick="openMajorAdd()">添加用户</xy-button>
+        <xy-button>批量删除</xy-button>
+        <xy-button>批量导入</xy-button>
+    </div>
+    <xy-table thead="选择,专业,专业名,操作"
+              @vue:mounted="getMajorList()">
+        <xy-tr v-for="(item,index) in majorListData" :key="index">
+            <xy-td>
+                <xy-checkbox></xy-checkbox>
+            </xy-td>
+            <xy-td>{{item.majorId}}</xy-td>
+            <xy-td>{{item.majorName}}</xy-td>
+            <xy-td>
+                <xy-button @click="openMajorEdit(item)">编辑</xy-button>
+                <xy-button type="danger">删除</xy-button>
+            </xy-td>
+        </xy-tr>
+    </xy-table>
+    <div style="display: flex;justify-content: center;margin-top: 20px">
+        <xy-pagination pagesize="3" total="50"></xy-pagination>
+    </div>
+</div>
+<script src="/lib/petite-vue.iife.js"></script>
+<script>
+    function openMajorEdit(item) {
+        console.log(item)
+        layer.open({
+            type: 2,
+            title: '编辑教师信息',
+            shadeClose: true,
+            shade: 0.3,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['600px', '400px'],
+            content: `/teacher_edit?majorId=${item.majorId}&majorName=${item.majorName}`
+        });
+    }
+
+    function openMajorAdd() {
+        layer.open({
+            type: 2,
+            title: '添加学生',
+            shadeClose: true,
+            shade: 0.3,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['600px', '400px'],
+            content: '/major_add'
+        });
+    }
+
+    const majorListData = PetiteVue.reactive([])
+    PetiteVue.createApp({
+        majorListData
+    }).mount()
+
+    function getMajorList() {
+        fetch("/major/list")
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                majorListData.push(...data.data)
+            })
+    }
+
+</script>
+</body>
+</html>
