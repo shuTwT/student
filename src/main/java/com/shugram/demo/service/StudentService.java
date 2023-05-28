@@ -8,5 +8,5 @@ import java.util.Map;
 
 
 public interface StudentService extends IService<StudentEntity> {
-    void resolveStudentList(List<Map<String,String>> studentList);
+    String resolveStudentList(List<Map<String,String>> studentList);
 }

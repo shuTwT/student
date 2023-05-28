@@ -89,8 +89,8 @@ public class StudentController {
     @PassToken
     @Operation(summary = "批量导入学生")
     @PostMapping("/importStudents")
-    public void importStudents(@RequestBody List<Map<String,String>> studentList){
-        studentService.resolveStudentList(studentList);
+    public String importStudents(@RequestBody List<Map<String,String>> studentList){
+        return studentService.resolveStudentList(studentList);
     }
 
 
