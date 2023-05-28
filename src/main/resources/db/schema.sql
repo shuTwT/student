@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS score;
 DROP TABLE IF EXISTS sys_role;
 DROP TABLE IF EXISTS sys_user;
 DROP TABLE IF EXISTS sys_router;
+DROP TABLE IF EXISTS sys_log;
 
 CREATE TABLE stu_major
 (
@@ -91,3 +92,9 @@ CREATE TABLE sys_router
     min_role         BIGINT       NOT NULL DEFAULT 1 COMMENT '最小权限',
     PRIMARY KEY (router_id)
 );
+CREATE TABLE sys_log
+(
+    log_id  BIGINT NOT NULL  AUTO_INCREMENT,
+    user_id bigint not null COMMENT '操作用户',
+    create_time TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP() COMMENT '操作时间'
+)

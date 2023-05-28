@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Tag(name="学生接口")
 @RequestMapping("student")
@@ -84,5 +85,13 @@ public class StudentController {
     public Response<Object> handleException(Exception e) {
         return Response.fail(500, e.getMessage());
     }
+
+    @PassToken
+    @Operation(summary = "批量导入学生")
+    @PostMapping("/importStudents")
+    public void importStudents(@RequestBody List<Map<String,String>> studentList){
+        studentService.resolveStudentList(studentList);
+    }
+
 
 }

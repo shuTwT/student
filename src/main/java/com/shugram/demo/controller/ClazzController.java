@@ -1,9 +1,7 @@
 package com.shugram.demo.controller;
 
 import com.shugram.demo.pojo.Clazz;
-import com.shugram.demo.pojo.Course;
 import com.shugram.demo.service.ClazzService;
-import com.shugram.demo.service.CourseService;
 import com.shugram.demo.utils.PassToken;
 import com.shugram.demo.utils.Response;
 import io.swagger.v3.oas.annotations.Operation;
