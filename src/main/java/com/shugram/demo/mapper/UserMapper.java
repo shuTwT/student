@@ -10,10 +10,10 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper extends BaseMapper<UserEntity> {
-    @Select("SELECT COUNT(*) FROM sys_user where user_name = #{user_name}")
+    @Select("SELECT COUNT(*) FROM sys_user where user_name = #{user_name};")
     int getCountByName(@Param("user_name") String userName);
-    @Select("SELECT COUNT(*) FROM sys_user WHERE user_name = #{user_name} and user_password = #{password}")
+    @Select("SELECT COUNT(*) FROM sys_user WHERE user_name = #{user_name} and user_password = #{password};")
     int getCountByPassword(@Param("user_name") String userName,@Param("user_password") String userPassword);
-    @Select("SELECT user_id,user_name,user_password FROM sys_user where user_id= #{user_id}")
+    @Select("SELECT user_id,user_name,user_password FROM sys_user where user_id= #{user_id};")
     List<UserEntity> getUserById(@Param("user_id")int userId);
 }

@@ -1,7 +1,9 @@
 package com.shugram.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.shugram.demo.entity.Pager;
 import com.shugram.demo.entity.StudentEntity;
+import com.shugram.demo.pojo.Student;
 import com.shugram.demo.service.StudentService;
 import com.shugram.demo.utils.PassToken;
 import com.shugram.demo.utils.Response;
@@ -29,8 +31,8 @@ public class StudentController {
     @PassToken
     @Operation(summary="学生列表")
     @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
-    public Response<List<StudentEntity>> getList() {
-        List<StudentEntity> stuList= studentService.list();
+    public Response<Pager<Student>> getList(@RequestParam int page,int limit) {
+        Pager<Student> stuList= studentService.getStudentListByPage(page,limit);
         return Response.success(stuList);
     }
 
@@ -89,7 +91,7 @@ public class StudentController {
     @PassToken
     @Operation(summary = "批量导入学生")
     @PostMapping("/importStudents")
-    public String importStudents(@RequestBody List<Map<String,String>> studentList){
+    public Response<String> importStudents(@RequestBody List<Map<String,String>> studentList){
         return studentService.resolveStudentList(studentList);
     }
 

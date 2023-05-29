@@ -63,4 +63,8 @@ public class ScoreController {
             return Response.success("");
         }
     }
+    public Response<String> importScore(){
+        return Response.success("success");
+    }
+
 }

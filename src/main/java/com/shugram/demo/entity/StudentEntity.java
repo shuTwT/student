@@ -15,5 +15,6 @@ public class StudentEntity {
     private String stuSex;
     private String stuDate;
     private Long stuMajorId;
+    private Long stuClazzId;
     private String lastUpdate;
 }

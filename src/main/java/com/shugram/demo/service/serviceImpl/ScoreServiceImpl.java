@@ -23,4 +23,10 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
     public List<Score> findScoreAll() {
         return scoreMapper.findScoreAll();
     }
+
+    public boolean isHasScore(long stuId){
+
+        return false;
+    }
+
 }
