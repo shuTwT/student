@@ -32,4 +32,5 @@ public class ClazzServiceImpl extends ServiceImpl<ClazzMapper, ClazzEntity> impl
         );
         return one.getClazzId();
     }
+
 }

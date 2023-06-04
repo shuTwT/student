@@ -7,5 +7,6 @@ import com.shugram.demo.pojo.Course;
 import java.util.List;
 
 public interface CourseService extends IService<CourseEntity> {
-    public List<Course> findCourseAll();
+    List<Course> findCourseAll();
+    Long findIdByName(String courseName);
 }

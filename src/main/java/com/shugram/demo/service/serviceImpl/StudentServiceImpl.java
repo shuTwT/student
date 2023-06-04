@@ -1,8 +1,10 @@
 package com.shugram.demo.service.serviceImpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.shugram.demo.entity.MajorEntity;
 import com.shugram.demo.entity.Pager;
 import com.shugram.demo.entity.StudentEntity;
 import com.shugram.demo.mapper.StudentMapper;
@@ -83,6 +85,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, StudentEntity
         System.out.println("这里");
         System.out.println(pager.getData());
         return pager;
+    }
+    public Long findIdByName(String stuName){
+        StudentEntity one= this.getOne(new QueryWrapper<StudentEntity>()
+                .eq("stu_name",stuName)
+                .last("limit 1")
+        );
+        return one.getStuId();
     }
 
 

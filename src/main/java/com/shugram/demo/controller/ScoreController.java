@@ -1,6 +1,7 @@
 package com.shugram.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.shugram.demo.entity.Pager;
 import com.shugram.demo.entity.ScoreEntity;
 import com.shugram.demo.entity.StudentEntity;
 import com.shugram.demo.pojo.Score;
@@ -33,14 +34,12 @@ public class ScoreController {
     @PassToken
     @Operation(summary="成绩列表")
     @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
-    public Response<List<Score>> getList(@RequestParam Map<String,String> params ) {
+    public Response<Pager<Score>> getList(@RequestParam Map<String,String> params ) {
         String courseName=params.get("courseName");
         String clazzName=params.get("clazzName");
         int page =Integer.parseInt(params.get("page"));
         int size=Integer.parseInt(params.get("limit"));
-        List<Score> scoreList= scoreService.findScoreAll(courseName,clazzName,page,size);
-        System.out.println(scoreList);
-        return Response.success(scoreList);
+        return scoreService.findScoreAll(courseName,clazzName,page,size);
     }
     @Operation(summary="添加成绩")
     @PostMapping("/add")
@@ -75,9 +74,9 @@ public class ScoreController {
         }
     }
     @Operation(summary = "批量导入成绩")
-    @PostMapping("importScore")
+    @PostMapping("importScores")
     public Response<String> importScore(@RequestBody List<Map<String,String>> scoreList){
-        return Response.success("success");
+        return scoreService.resolveScoreList(scoreList);
     }
     // 对指定成绩id增加十分
     @PassToken
