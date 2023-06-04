@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Score {
     private Integer scoreId;
     private String courseName;
-    private String teacherName;
+    private String clazzName;
     private String stuName;
     private String scoreNum;
 }

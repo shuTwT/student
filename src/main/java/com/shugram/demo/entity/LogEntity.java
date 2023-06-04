@@ -9,6 +9,11 @@ import lombok.Data;
 public class LogEntity {
     @TableId
     private Long logId;
-    private String logContent;
+    private String logTitle;
+    private int logType;
+    private String logIp;
+    private String logMethod;
+    private String logClient;
     private Long userId;
+
 }

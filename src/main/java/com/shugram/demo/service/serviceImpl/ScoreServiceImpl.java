@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> implements ScoreService {
@@ -20,8 +21,10 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
     }
 
     @Override
-    public List<Score> findScoreAll() {
-        return scoreMapper.findScoreAll();
+    public List<Score> findScoreAll(String courseName,String clazzName,int page,int size) {
+        System.out.println(courseName);
+        System.out.println(clazzName);
+        return scoreMapper.findScoreAll(courseName,clazzName,page*size, size);
     }
 
     public boolean isHasScore(long stuId){
@@ -33,6 +36,10 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
     }
     public void reduceScore(Long scoreId){
         scoreMapper.reduceScore(scoreId);
+    }
+
+    public void resolveScoreList(List<Map<String,String>> scoreList){
+
     }
 
 }

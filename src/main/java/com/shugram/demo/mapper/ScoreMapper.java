@@ -12,8 +12,8 @@ import java.util.List;
 
 @Mapper
 public interface ScoreMapper extends BaseMapper<ScoreEntity> {
-    @Select("SELECT score_id,course_name,teacher_name,stu_name,score_num FROM score,course,student,teacher where score_cid=course_id and score_sid=stu_id and course_tid=teacher_id;")
-    List<Score> findScoreAll();
+    @Select("SELECT score_id,course_name,clazz_name,stu_name,score_num FROM score,course,student,stu_clazz where score_cid=course_id and score_sid=stu_id and stu_clazz_id=clazz_id and course_name LIKE '%#{course_name}%' and clazz_name LIKE '%#{clazz_name}%' limit #{i},#{n}")
+    List<Score> findScoreAll(@Param("course_name") String courseName,@Param("clazz_name") String clazzName,@Param("i") int i,@Param("n") int n);
     @Update("UPDATE score SET score_num=CAST(score_num AS INT)+10 where score_id=#{score_id}")
     void inCreaseScore(@Param("score_id") Long scoreId);
     @Update("UPDATE score SET score_num=CAST(score_num AS INT)-10 where score_id=#{score_id}")
