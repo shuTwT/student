@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> implements ScoreService {
@@ -33,6 +34,10 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
     }
     public void reduceScore(Long scoreId){
         scoreMapper.reduceScore(scoreId);
+    }
+
+    public void resolveScoreList(List<Map<String,String>> scoreList){
+
     }
 
 }
