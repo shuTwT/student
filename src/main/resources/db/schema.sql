@@ -95,6 +95,7 @@ CREATE TABLE sys_router
 CREATE TABLE sys_log
 (
     log_id  BIGINT NOT NULL  AUTO_INCREMENT,
+    log_content varchar(255) COMMENT '日志内容',
     user_id bigint not null COMMENT '操作用户',
     create_time TIMESTAMP NOT NULL  DEFAULT CURRENT_TIMESTAMP() COMMENT '操作时间'
 )

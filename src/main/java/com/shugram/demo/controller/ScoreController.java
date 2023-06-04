@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Tag(name="成绩接口")
 @RequestMapping("score")
@@ -27,7 +28,7 @@ public class ScoreController {
     @PassToken
     @Operation(summary="成绩列表")
     @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
-    public Response<List<Score>> getList() {
+    public Response<List<Score>> getList(@RequestParam Map<String,String> params ) {
         List<Score> scoreList= scoreService.findScoreAll();
         return Response.success(scoreList);
     }
@@ -65,6 +66,20 @@ public class ScoreController {
     }
     public Response<String> importScore(){
         return Response.success("success");
+    }
+    // 对指定成绩id增加十分
+    @PostMapping("/increase")
+    public Response<String> increaseScore(@RequestBody Map<String,String> params){
+        String scoreId=params.get("scoreId");
+        scoreService.increaseScore(Long.valueOf(scoreId));
+        return Response.success("");
+    }
+    // 对指定成绩id减少十分
+    @PostMapping("/reduce")
+    public Response<String> reduceScore(@RequestBody Map<String,String> params){
+        String scoreId=params.get("scoreId");
+        scoreService.reduceScore(Long.valueOf(scoreId));
+        return Response.success("");
     }
 
 }

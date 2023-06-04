@@ -25,8 +25,14 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
     }
 
     public boolean isHasScore(long stuId){
-
         return false;
+    }
+
+    public void increaseScore(Long scoreId){
+        scoreMapper.inCreaseScore(scoreId);
+    }
+    public void reduceScore(Long scoreId){
+        scoreMapper.reduceScore(scoreId);
     }
 
 }

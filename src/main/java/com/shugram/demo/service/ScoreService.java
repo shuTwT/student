@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ScoreService extends IService<ScoreEntity> {
     public List<Score> findScoreAll();
+    void increaseScore(Long scoreId);
+    void reduceScore(Long scoreId);
 }
