@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class Student {
     private Long stuId;
     private String stuName;
-    private String majorName;
+    private String clazzName;
     private String stuSex;
 }

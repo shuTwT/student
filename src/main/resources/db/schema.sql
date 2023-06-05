@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS sys_log;
 
 CREATE TABLE stu_major
 (
-    major_id       bigint      NOT NULL COMMENT '专业id',
+    major_id       bigint      NOT NULL AUTO_INCREMENT COMMENT '专业id',
     major_name     varchar(20) NULL     DEFAULT NULL COMMENT '专业名',
     major_disabled bool        NOT NULL DEFAULT 0 COMMENT '禁用',
     last_update    TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '更新时间',
@@ -19,7 +19,7 @@ CREATE TABLE stu_major
 );
 CREATE TABLE stu_clazz
 (
-    clazz_id       BIGINT      NOT NULL COMMENT '班级id',
+    clazz_id       BIGINT      NOT NULL AUTO_INCREMENT COMMENT '班级id',
     clazz_name     VARCHAR(20) NULL     default NULL COMMENT '班级名',
     major_id       BIGINT      NULL     DEFAULT NULL COMMENT '专业id',
     assistant_id   BIGINT      NULL     DEFAULT NULL COMMENT '辅导员id',
@@ -29,7 +29,7 @@ CREATE TABLE stu_clazz
 );
 CREATE TABLE teacher
 (
-    teacher_id       bigint      NOT NULL COMMENT '教师id',
+    teacher_id       bigint      NOT NULL AUTO_INCREMENT COMMENT '教师id',
     teacher_name     varchar(20) NULL     DEFAULT NULL COMMENT '教师名',
     teacher_disabled bool        NOT NULL DEFAULT 0 COMMENT '禁用',
     last_update      TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '更新时间',
@@ -37,7 +37,7 @@ CREATE TABLE teacher
 );
 CREATE TABLE course
 (
-    course_id       bigint      NOT NULL COMMENT '课程id',
+    course_id       bigint      NOT NULL AUTO_INCREMENT COMMENT '课程id',
     course_name     varchar(20) NULL     DEFAULT NULL COMMENT '课程名',
     course_tid      bigint      NOT NULL COMMENT '授课教师id',
     course_hour     int         NOT NULL COMMENT '课程学时',
@@ -48,7 +48,7 @@ CREATE TABLE course
 );
 CREATE TABLE student
 (
-    stu_id       BIGINT      NOT NULL COMMENT '主键ID',
+    stu_id       BIGINT      NOT NULL AUTO_INCREMENT COMMENT '主键ID',
     stu_name     VARCHAR(30) NULL     DEFAULT NULL COMMENT '姓名',
     stu_age      INT         NULL     DEFAULT NULL COMMENT '年龄',
     stu_sex      varchar(10) NULL     DEFAULT NULL COMMENT '性别',
@@ -61,7 +61,7 @@ CREATE TABLE student
 );
 CREATE TABLE score
 (
-    score_id    BIGINT      NOT NULL COMMENT '成绩id',
+    score_id    BIGINT      NOT NULL AUTO_INCREMENT COMMENT '成绩id',
     score_cid   BIGINT      NOT NULL DEFAULT NULL COMMENT '课程id',
     score_sid   BIGINT      NOT NULL DEFAULT NULL COMMENT '学生id',
     score_num   VARCHAR(10) NULL     DEFAULT NULL COMMENT '成绩',
@@ -70,12 +70,12 @@ CREATE TABLE score
 );
 CREATE TABLE sys_role
 (
-    role_id   BIGINT      NOT NULL COMMENT '角色id',
+    role_id   BIGINT      NOT NULL AUTO_INCREMENT COMMENT '角色id',
     role_name varchar(10) NOT NULL COMMENT '角色名'
 );
 CREATE TABLE sys_user
 (
-    user_id       BIGINT      NOT NULL COMMENT '用户id',
+    user_id       BIGINT      NOT NULL AUTO_INCREMENT COMMENT '用户id',
     user_name     VARCHAR(20) NOT NULL COMMENT '用户名',
     user_password varchar(20) NOT NULL COMMENT '密码',
     role_id       BIGINT      NOT NULL COMMENT '角色id',

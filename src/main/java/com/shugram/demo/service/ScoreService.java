@@ -15,4 +15,5 @@ public interface ScoreService extends IService<ScoreEntity> {
     void increaseScore(Long scoreId);
     void reduceScore(Long scoreId);
     Response<String> resolveScoreList(List<Map<String,String>> scoreList);
+    Response<String> addScore();
 }

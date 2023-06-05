@@ -43,11 +43,11 @@ public class ScoreController {
     }
     @Operation(summary="添加成绩")
     @PostMapping("/add")
-    public Response<String> addStudent(@RequestBody ScoreEntity score){
+    public Response<String> addScore(@RequestBody ScoreEntity score){
         QueryWrapper<ScoreEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper
                 .select("SELECT 1")
-                .eq("stu_id",score.getScoreId())
+                .eq("score_id",score.getScoreId())
                 .last("LIMIT 1");
         int count= scoreService.count(queryWrapper);
         if (count!=0){
@@ -63,7 +63,7 @@ public class ScoreController {
         QueryWrapper<ScoreEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper
                 .select("SELECT 1")
-                .eq("stu_id",score.getScoreId())
+                .eq("score_id",score.getScoreId())
                 .last("LIMIT 1");
         int count= scoreService.count(queryWrapper);
         if (count==0){
@@ -73,6 +73,7 @@ public class ScoreController {
             return Response.success("");
         }
     }
+    @PassToken
     @Operation(summary = "批量导入成绩")
     @PostMapping("importScores")
     public Response<String> importScore(@RequestBody List<Map<String,String>> scoreList){

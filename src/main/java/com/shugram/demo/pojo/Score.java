@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class Score {
-    private Integer scoreId;
+    private Long scoreId;
     private String courseName;
     private String clazzName;
     private String stuName;

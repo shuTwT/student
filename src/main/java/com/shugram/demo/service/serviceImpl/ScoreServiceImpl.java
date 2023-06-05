@@ -73,5 +73,8 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
         });
         return Response.success("success");
     }
+    public Response<String> addScore(){
+        return Response.success("");
+    }
 
 }
