@@ -3,7 +3,6 @@ package com.shugram.demo.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.shugram.demo.entity.Pager;
 import com.shugram.demo.entity.ScoreEntity;
-import com.shugram.demo.entity.StudentEntity;
 import com.shugram.demo.pojo.Score;
 import com.shugram.demo.service.LogService;
 import com.shugram.demo.service.ScoreService;

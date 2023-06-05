@@ -3,7 +3,6 @@ package com.shugram.demo.service.serviceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shugram.demo.entity.ClazzEntity;
-import com.shugram.demo.entity.MajorEntity;
 import com.shugram.demo.mapper.ClazzMapper;
 import com.shugram.demo.pojo.Clazz;
 import com.shugram.demo.service.ClazzService;

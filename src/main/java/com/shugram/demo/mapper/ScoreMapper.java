@@ -1,7 +1,6 @@
 package com.shugram.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.shugram.demo.entity.Pager;
 import com.shugram.demo.entity.ScoreEntity;
 import com.shugram.demo.pojo.Score;
 import org.apache.ibatis.annotations.Mapper;

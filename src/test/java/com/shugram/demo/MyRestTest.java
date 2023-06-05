@@ -2,7 +2,6 @@ package com.shugram.demo;
 
 import com.shugram.demo.entity.StudentEntity;
 import com.shugram.demo.mapper.StudentMapper;
-import org.junit.Assert;
 import org.junit.Test;
 
 import org.junit.runner.RunWith;

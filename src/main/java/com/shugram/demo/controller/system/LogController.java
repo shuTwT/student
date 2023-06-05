@@ -1,6 +1,5 @@
 package com.shugram.demo.controller.system;
 
-import com.shugram.demo.entity.LogEntity;
 import com.shugram.demo.entity.Pager;
 import com.shugram.demo.pojo.Log;
 import com.shugram.demo.service.LogService;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 @RequestMapping("system/log")
