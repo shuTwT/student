@@ -31,8 +31,8 @@ public class StudentController {
     @PassToken
     @Operation(summary="学生列表")
     @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
-    public Response<Pager<Student>> getList(@RequestParam int page,int limit) {
-        Pager<Student> stuList= studentService.getStudentListByPage(page,limit);
+    public Response<Pager<Student>> getList(@RequestParam String clazzName ,@RequestParam int page,@RequestParam int limit) {
+        Pager<Student> stuList= studentService.getStudentListByPage(clazzName,page,limit);
         return Response.success(stuList);
     }
 

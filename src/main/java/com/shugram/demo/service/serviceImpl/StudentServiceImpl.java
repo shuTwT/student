@@ -75,9 +75,10 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, StudentEntity
 
     // page第几页
     // size每页记录数
-    public Pager<Student> getStudentListByPage(int page,int size) {
+    public Pager<Student> getStudentListByPage(String clazzName,int page,int size) {
+        System.out.println(clazzName);
         Pager<Student> pager= new Pager<>(page,size);
-        pager.setData(studentMapper.findStudentByPage(page*size,size));
+        pager.setData(studentMapper.findStudentByPage(clazzName,page*size,size));
         pager.setTotal(studentMapper.findStudentCount());
         System.out.println("这里");
         System.out.println(pager.getData());

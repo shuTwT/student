@@ -12,6 +12,6 @@ import java.util.Map;
 
 public interface StudentService extends IService<StudentEntity> {
     Response<String> resolveStudentList(List<Map<String,String>> studentList);
-    Pager<Student> getStudentListByPage(int page, int size);
+    Pager<Student> getStudentListByPage(String clazzName,int page, int size);
     Long findIdByName(String stuName);
 }
