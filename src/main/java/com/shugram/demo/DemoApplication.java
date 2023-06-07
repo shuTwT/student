@@ -35,7 +35,7 @@ public class DemoApplication {
 
     public void backupDatabase(){
         String fileName = "backup-" + LocalDate.now().toString() + ".sql";
-        String url = "jdbc:h2:file:/path/to/database";
+        String url = "jdbc:h2:mem:test";
         String user = "sa";
         String password = "sa";
         try {

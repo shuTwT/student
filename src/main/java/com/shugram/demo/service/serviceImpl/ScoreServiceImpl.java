@@ -56,7 +56,7 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, ScoreEntity> impl
             Long courseId=courseService.findIdByName(item.get("课程名"));
             Long stuId=studentService.findIdByName(item.get("学生名"));
             Long clazzId=clazzService.findIdByName(item.get("班级名"));
-            String scoreNum= "";
+            String scoreNum;
             if ("".equals(item.get("分数"))){
                 scoreNum="50";
             }else {
